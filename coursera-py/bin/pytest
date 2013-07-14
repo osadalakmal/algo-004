@@ -1,0 +1,7 @@
+#!/home/osada/prog2/coursera-algo/coursera-py/bin/python2.7 -u
+
+import warnings
+warnings.simplefilter('default', DeprecationWarning)
+
+from logilab.common.pytest import run
+run()

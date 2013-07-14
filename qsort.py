@@ -1,10 +1,12 @@
 """This file implements a quick sort algorithm"""
 import sys
+import copy
 
 def getPivot(array,start,end):
-    return array[int((start + end)/2)]
+    return int((start + end)/2)
 
 def easy_qsort(input,start,end,result):
+    print("start %d end %d" % (start,end))
     if (start == end):
         return
     lessIndex = start;
@@ -21,10 +23,11 @@ def easy_qsort(input,start,end,result):
             result[moreIndex] = input[index]
             moreIndex -= 1
     result[lessIndex] = pivot
-    if(lessIndex > 1):
-        easy_qsort(result,start,lessIndex-1,result)
-    if (moreIndex > 1):
-        easy_qsort(result,moreIndex+1,end,result)
+    temp_input = copy.copy(result)
+    if(lessIndex > 1 and lessIndex > start):
+        easy_qsort(temp_input,start,lessIndex-1,result)
+    if (moreIndex < end):
+        easy_qsort(temp_input,moreIndex+1,end,result)
 
 
 def main():
